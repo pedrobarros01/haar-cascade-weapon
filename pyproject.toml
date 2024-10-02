@@ -1,13 +1,17 @@
 [tool.poetry]
-name = "python-repository-template"
-version = "0.2.0"
-description = "A Python repository template."
-authors = ["Your Name <you@example.com>"]
+name = "haar-cascade-weapons"
+version = "0.1.0"
+description = "Algoritmo de Haar Cascade utilizado para detectar armas"
+authors = ["Pedro Barros <pedrobarros0101@outlook.com>"]
 license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "~3.9.13"
+python = "^3.9.13"
+opencv-python = "^4.10.0.84"
+matplotlib = "^3.9.2"
+ultralytics = "^8.3.3"
+headless = "^1.12.4"
 
 [tool.poetry.group.dev.dependencies]
 notebook = "^7.1.2"
