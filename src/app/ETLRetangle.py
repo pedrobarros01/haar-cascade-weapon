@@ -48,12 +48,25 @@ def detect_objects_and_create_txt(image_path, txt_output_path):
             file.write(f"{annotation}\n")
 
 
+def transform_negatives_in_txt():
+    neg_image_dir = "src/images/negativa"
+    with open("bg.txt", 'w') as f:
+        total = len(os.listdir(neg_image_dir))
+        for i, filename in enumerate(os.listdir(neg_image_dir)):
+            if filename.endswith(".jpg") or filename.endswith(".png"):
+                f.write(os.path.join(neg_image_dir, filename) + '\n')
+                print(f'Carregando: {((i + 1) / total) * 100}%')
+
+
+
 def extract():
-    positivo_dir = 'src/images/p'
+    positivo_dir = 'src/images/positiva'
 
 
     arquivos = os.listdir(positivo_dir)
+    total = len(arquivos)
     path_txt = 'amostras.lst'
-    for arquivo in arquivos:
+    for i, arquivo in enumerate(arquivos):
         path_image = os.path.join(positivo_dir, arquivo)
         detect_objects_and_create_txt(path_image, path_txt)
+        print(f'Carregando: {((i + 1) / total) * 100}%')

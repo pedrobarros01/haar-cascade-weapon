@@ -10,7 +10,7 @@ def cascade():
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    objects = cascade.detectMultiScale(gray, 2.5, 13)
+    objects = cascade.detectMultiScale(gray, 4.5, 25)
 
     for (x, y, w, h) in objects:
         cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
