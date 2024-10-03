@@ -22,12 +22,12 @@ def detect_objects_and_create_txt(image_path, txt_output_path):
         conf = result.boxes.conf
         detections = result.boxes.xyxy
 
-        num_objects = sum(conf >= 0.5)  # Contar apenas as detecções com confiança >= 0.5
+        num_objects = sum(conf >= 0.7)  # Contar apenas as detecções com confiança >= 0.5
         if num_objects > 0:
             annotation_line = f"{image_path} {num_objects}"
 
             for pos, detection in enumerate(detections):
-                if conf[pos] >= 0.5:
+                if conf[pos] >= 0.7:
                     xmin, ymin, xmax, ymax = detection
                     width = int(xmax - xmin)
                     height = int(ymax - ymin)
@@ -53,7 +53,7 @@ def transform_negatives_in_txt():
     with open("bg.txt", 'w') as f:
         total = len(os.listdir(neg_image_dir))
         for i, filename in enumerate(os.listdir(neg_image_dir)):
-            if filename.endswith(".jpg") or filename.endswith(".png"):
+            if (filename.endswith(".jpg") or filename.endswith(".png")) and i <= 599:
                 f.write(os.path.join(neg_image_dir, filename) + '\n')
                 print(f'Carregando: {((i + 1) / total) * 100}%')
 
@@ -61,8 +61,6 @@ def transform_negatives_in_txt():
 
 def extract():
     positivo_dir = 'src/images/positiva'
-
-
     arquivos = os.listdir(positivo_dir)
     total = len(arquivos)
     path_txt = 'amostras.lst'
