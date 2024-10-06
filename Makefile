@@ -10,9 +10,17 @@ install: ## Install Python requirements.
 	poetry install --no-root
 	poetry run pre-commit install
 
-.PHONY: run
-run: ## Run the project.
-	poetry run python -m src.app
+.PHONY: treinot
+treinot: ## Run the project.
+	poetry run python -m src.app --modo TREINOT
+
+.PHONY: treinop
+treinop: ## Run the project.
+	poetry run python -m src.app --modo TREINOP
+
+.PHONY: video
+video: ## Run the project.
+	poetry run python -m src.app --modo VIDEO
 
 .PHONY: run-transform-positive
 run-transform-positive: ## Run first example script.
