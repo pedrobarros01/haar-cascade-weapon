@@ -2,9 +2,9 @@ import cv2
 import matplotlib.pyplot as plt
 
 
-def cascade_video():
-    cascade = cv2.CascadeClassifier('classifier/cascade.xml')
-    video = cv2.VideoCapture('src/images/video/video.mp4')
+def cascade_video(path_classifier, path_video):
+    cascade = cv2.CascadeClassifier(path_classifier)
+    video = cv2.VideoCapture(path_video)
     while True:
         ret, img = video.read()
         if not ret: 

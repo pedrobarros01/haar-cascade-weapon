@@ -12,6 +12,7 @@ opencv-python = "^4.10.0.84"
 matplotlib = "^3.9.2"
 ultralytics = "^8.3.3"
 headless = "^1.12.4"
+pillow = "^10.4.0"
 
 [tool.poetry.group.dev.dependencies]
 notebook = "^7.1.2"

@@ -21,22 +21,4 @@ def comando_create_samples(quant_positive):
 
 
 def comando_train_cascade(quant_positive, quant_negative, epocas):
-
-    lista_comando = [
-        'opencv_traincascade', 
-        '-data', 'classifier', 
-        '-vec', 'positives.vec', 
-        '-bg', 'bg.txt', 
-        '-numPos', f'{quant_positive}', 
-        '-numNeg', f'{quant_negative}', 
-        '-numStages', f'{epocas}', 
-        '-w', '24', 
-        '-h', '24',
-        '-maxFalseAlarmRate', '0.2'
-        ]
-    try:
-        # Executa o comando e exibe a saída e erros
-        result = subprocess.run(lista_comando, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        print(result.stdout)
-    except subprocess.CalledProcessError as e:
-        print(f"Erro ao executar o comando: {e.stderr}")
+    return f'opencv_traincascade -data classifier -vec positives.vec -bg bg.txt -numPos {quant_positive} -numNeg {quant_negative} -numStages {epocas} -w 24 -h 24 -maxFalseAlarmRate 0.2'

@@ -83,10 +83,12 @@ class RectangleYOLO:
         return total_amostras
     
     @classmethod
-    def prepare_train(cls, quant_positives, quant_negatives):
+    def prepare_train(cls, quant_positives, quant_negatives, epocas):
         cls.__transform_negatives_in_txt(quant_negatives)
         total_amostras = cls.__extract(quant_positives)
         comando_create_samples(total_amostras)
+        comando = comando_train_cascade(total_amostras, quant_negatives, epocas)
+        return comando
         
         
     
